@@ -14,6 +14,7 @@ Tries to implement the material design for text fields documented at [material.i
 - Segoe MDL2 Assets that are displayed next to the control
 - Helper text below the control
 - Button to clear text input
+
 Watch it in action - [imgur .gif](http://imgur.com/a/W20gm)
 
 
