@@ -46,7 +46,7 @@ namespace UWPMaterialControls.Controls
             
             SetCommonVisualState(false);
             SetOverlayTextVisualState(false);
-            //SetLabelVisualState called in laberPresenter.Loaded event
+            //SetLabelVisualState called in labelPresenter.Loaded event because the height property of the label is needed before the VisualState is set
             UpdateCharacterCountPresenter();
             TextChanged += MaterialTextBox_TextChanged;
 
@@ -137,15 +137,6 @@ namespace UWPMaterialControls.Controls
         // Using a DependencyProperty as the backing store for Valid.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValidProperty =
             DependencyProperty.Register(nameof(Valid), typeof(bool), typeof(MaterialTextBox), new PropertyMetadata(true));
-
-        public Brush PrimaryTextForeground
-        {
-            get { return (Brush)GetValue(PrimaryTextForegroundProperty); }
-            set { SetValue(PrimaryTextForegroundProperty, value); }
-        }
-        // Using a DependencyProperty as the backing store for PrimaryTextForeground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PrimaryTextForegroundProperty =
-            DependencyProperty.Register(nameof(PrimaryTextForeground), typeof(Brush), typeof(MaterialTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
 
         public Brush SecondaryTextForeground
         {
