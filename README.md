@@ -1,5 +1,4 @@
-# UWPMaterialControls-
-
+# Material Design UWP Controls
 ## MaterialTextBox
 A custom UWP control that tries to implement the design and functionality for material text fields documented at [material.io](https://material.io)
 
