@@ -18,24 +18,4 @@ Tries to implement the material design for text fields documented at [material.i
 Watch it in action - [imgur .gif](http://imgur.com/a/W20gm)
 
 
-### Properties that can be defined in XAML and code behind
-
-- AutocompleteText
-- Text
-- LabelText
-- LabelFontSize
-- HelperText
-- ErrorText
-- Valid
-- PrimaryTextForeground (used for Text)
-- SecondaryTextForeground (used for Label, HelperText, CharacterCountPresenter)
-- InputLineForeground
-- PlaceholderText
-- MaxCharacter
-- SegoeMDL2Icon
-
-### Events
-
-- TextChanged
-- TextAutoCompleted
-- ToManyCharacters
+[Documentation](https://github.com/SteffenViebrock/UWPMaterialControls/wiki/MaterialTextBox-Documentation)
