@@ -248,6 +248,7 @@ namespace UWPMaterialControls.Controls
         private void MaterialTextBox_TextChanged(object sender, RoutedEventArgs e)
         {
             SetOverlayTextVisualStates();
+            SetLabelVisualStates();
             UpdateCharacterCountPresenter();
         }
 
