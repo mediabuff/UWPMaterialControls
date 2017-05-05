@@ -47,7 +47,6 @@ namespace UWPMaterialControls.Controls
             SetCommonVisualStates(false);
             SetOverlayTextVisualStates(false);
             //SetLabelVisualState called in labelPresenter.Loaded event because the height property of the label is needed before the VisualState is set
-            SetBoxedVisualStates(false);
             UpdateCharacterCountPresenter();
             TextChanged += MaterialTextBox_TextChanged;
 
@@ -197,21 +196,6 @@ namespace UWPMaterialControls.Controls
         public static readonly DependencyProperty SegoeMDL2IconProperty =
             DependencyProperty.Register(nameof(SegoeMDL2Icon), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
-        public bool IsBoxed
-        {
-            get { return (bool)GetValue(IsBoxedProperty); }
-            set
-            {
-                SetValue(IsBoxedProperty, value);
-                SetBoxedVisualStates();
-            }
-        }
-        // Using a DependencyProperty as the backing store for Boxed.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsBoxedProperty =
-            DependencyProperty.Register(nameof(IsBoxed), typeof(bool), typeof(MaterialTextField), new PropertyMetadata(false));
-
-
-
 
         private T GetTemplateChild<T>(string name) where T : DependencyObject
         {
@@ -270,7 +254,7 @@ namespace UWPMaterialControls.Controls
         private void LabelPresenter_Loaded(object sender, RoutedEventArgs e)
         {
             RowDefinition row = GetTemplateChild<RowDefinition>("LabelRow");
-            row.Height = new GridLength(labelPresenter.ActualHeight + 2);
+            row.Height = new GridLength(labelPresenter.ActualHeight + 7);
             SetLabelVisualStates(false);
         }
 
@@ -329,15 +313,6 @@ namespace UWPMaterialControls.Controls
             }
             else
                 VisualStateManager.GoToState(this, "LabelOnTopOfTextBox", animations);
-        }
-
-        private void SetBoxedVisualStates(bool animations = true)
-        {
-            if(IsBoxed)
-                VisualStateManager.GoToState(this, "Boxed", animations);
-            else
-                VisualStateManager.GoToState(this, "UnBoxed", animations);
-
         }
 
         private void UpdateCharacterCountPresenter()
