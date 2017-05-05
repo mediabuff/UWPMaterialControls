@@ -13,12 +13,12 @@ namespace UWPMaterialControls
             
         }
 
-        public void PriceBox_TextChanged()
+        public void InvalidBox_TextChanged()
         {
-            if (PriceBox.Text.Contains("-"))
-                PriceBox.Valid = false;
+            if (InvalidBox.Text.Contains("-"))
+                InvalidBox.Valid = false;
             else
-                PriceBox.Valid = true;
+                InvalidBox.Valid = true;
         }
     }
 }

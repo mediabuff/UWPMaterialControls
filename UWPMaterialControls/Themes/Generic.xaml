@@ -4,10 +4,11 @@
     xmlns:customControls="using:UWPMaterialControls.Controls"
     xmlns:converter="using:UWPMaterialControls.Converters">
 
-    <Style TargetType="customControls:MaterialTextBox">
+    <Style TargetType="customControls:MaterialTextField">
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="2,5,2,5"/>
+        <Setter Property="Margin" Value="2,3,2,2"/>
         <Setter Property="Valid" Value="True"/>
         <Setter Property="Foreground" Value="{ThemeResource TextControlForeground}"/>
         <Setter Property="SecondaryTextForeground" Value="{ThemeResource TextControlPlaceholderForeground}"/>
@@ -15,9 +16,9 @@
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="customControls:MaterialTextBox">
+                <ControlTemplate TargetType="customControls:MaterialTextField">
                     <Grid Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" DataContext="{Binding ElementName=userControl}"
-                          Background="{TemplateBinding Background}">
+                          Margin="{TemplateBinding Margin}">
                         <Grid.Resources>
                             <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
                             <converter:VerticalOffsetConverter x:Key="VerticalOffsetConverter"/>
@@ -42,7 +43,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="LabelPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="InputLine">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="InputLine">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{ThemeResource SystemControlHighlightAccentBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
 
@@ -62,7 +63,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="LabelPresenter">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Red"/>
                                         </ObjectAnimationUsingKeyFrames>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="InputLine">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="InputLine">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Red"/>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ErrorTextPanel">
@@ -92,7 +93,7 @@
                                 </VisualState>
                                 <VisualState x:Name="PointerOverValid">
                                     <Storyboard>
-                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="InputLine">
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="InputLine">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="Black"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -178,36 +179,39 @@
 
                         <!-- Without this border there the PointerOver event of the MateralTexBox Control does not fire bewtween controls -->
                         <Border Background="Pink" Opacity="0" Grid.RowSpan="4" Grid.ColumnSpan="3"/>
+                        <Border x:Name="BoxedBorder" Background="{TemplateBinding Background}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                CornerRadius="3"/>
 
                         <ContentPresenter x:Name="LabelPresenter" Content="{Binding LabelText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                          Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,0,0,2"
+                                          Grid.Row="0" Grid.Column="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="5,5,5,2"
                                           Foreground="{TemplateBinding SecondaryTextForeground}" FontSize="{TemplateBinding LabelFontSize}"
                                           Visibility="{Binding RelativeSource={RelativeSource Self}, Path=Content, Converter={StaticResource StringToVisibilityConverter}, Mode=TwoWay}"
-                                          CharacterSpacing="{TemplateBinding CharacterSpacing}"/>
+                                          CharacterSpacing="{TemplateBinding CharacterSpacing}">
+                        </ContentPresenter>
                         <ContentPresenter x:Name="SegoeMDL2IconPresenter" FontFamily="Segoe MDL2 Assets" Content="{TemplateBinding SegoeMDL2Icon}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding SecondaryTextForeground}"
                                           Grid.Column="0" Grid.Row="1" Margin="0,3,10,0" VerticalAlignment="Center" Visibility="{Binding RelativeSource={RelativeSource self}, Path=Content, Converter={StaticResource StringToVisibilityConverter}}"/>
-                        <Rectangle x:Name="InputLine" Fill="{TemplateBinding InputLineForeground}" 
-                                   Grid.Row="2" Height="2" Margin="0,2,0,4" Grid.Column="1" Grid.ColumnSpan="2"/>
-                        <Rectangle x:Name="AnimationLine" Height="2" Fill="{TemplateBinding InputLineForeground}" Width="0" Margin="0,2,0,4" 
+                        <Border x:Name="InputLine" Background="{TemplateBinding InputLineForeground}" CornerRadius="0"
+                                   Grid.Row="2" Height="2" Margin="0,2,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Rectangle x:Name="AnimationLine" Height="2" Fill="{TemplateBinding InputLineForeground}" Width="0" Margin="0,2,0,0" 
                                    Grid.Row="2" Visibility="Collapsed" Grid.Column="1" Grid.ColumnSpan="2"/>
                         <ContentPresenter x:Name="HelperTextPresenter" Content="{Binding HelperText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" FontSize="{TemplateBinding LabelFontSize}"
                                           Foreground="{TemplateBinding SecondaryTextForeground}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
                                           Visibility="{Binding RelativeSource={RelativeSource self}, Path=Content, Converter={StaticResource StringToVisibilityConverter}}"
-                                          CharacterSpacing="{TemplateBinding CharacterSpacing}"/>
+                                          CharacterSpacing="{TemplateBinding CharacterSpacing}" Margin="5,4,5,0"/>
                         <StackPanel x:Name="ErrorTextPanel" Orientation="Horizontal" Visibility="Collapsed"
-                                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,4,5,0">
                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE783;" Foreground="Red" VerticalAlignment="Center" FontSize="{TemplateBinding LabelFontSize}" Margin="0,0,5,0" 
                                        CharacterSpacing="{TemplateBinding CharacterSpacing}"/>
                             <ContentPresenter Content="{Binding ErrorText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" FontSize="{TemplateBinding LabelFontSize}"
                                               Foreground="Red" VerticalAlignment="Center" CharacterSpacing="{TemplateBinding CharacterSpacing}"/>
                         </StackPanel>
-                        <ContentPresenter x:Name="CharacterCountPresenter" x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Grid.Row="3" Grid.Column="2"
+                        <ContentPresenter x:Name="CharacterCountPresenter" x:DeferLoadStrategy="Lazy" Visibility="Collapsed" Grid.Row="3" Grid.Column="2" Margin="0,4,5,0"
                                           Foreground="{TemplateBinding SecondaryTextForeground}" CharacterSpacing="{TemplateBinding CharacterSpacing}" FontSize="{TemplateBinding LabelFontSize}"/>
-                        <ContentPresenter x:Name="OverlayTextPresenter" FontSize="{TemplateBinding FontSize}" 
+                        <ContentPresenter x:Name="OverlayTextPresenter" FontSize="{TemplateBinding FontSize}" Margin="5,0,5,0"
                                           Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" Foreground="{ThemeResource TextControlPlaceholderForeground}"
                                           Visibility="Collapsed" CharacterSpacing="{TemplateBinding CharacterSpacing}"/>
                         <TextBox x:Name="TextTextBox" FontSize="{TemplateBinding FontSize}" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2" Foreground="{TemplateBinding Foreground}"
+                                 Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2" Foreground="{TemplateBinding Foreground}" Margin="5,0,5,0"
                                  CharacterSpacing="{TemplateBinding CharacterSpacing}">
                             <TextBox.Style>
                                 <Style TargetType="TextBox">

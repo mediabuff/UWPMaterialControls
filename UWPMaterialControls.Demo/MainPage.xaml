@@ -13,14 +13,15 @@
         <StackPanel>
             <TextBlock Text="UWP/Windows 10 - Material Design Text Field/Textbox" Margin="0,100,0,30" FontWeight="Bold" HorizontalAlignment="Center"/>
             <StackPanel Width="360" Margin="5">
-                <customControls:MaterialTextBox LabelText="Line gives visual feedback when hovering" PlaceholderText="In focus the line and label are highlighted"/>
-                <customControls:MaterialTextBox x:Name="ProductBox" LabelText="Label" PlaceholderText="In focus label moves to the top to show placeholder"/>
-                <customControls:MaterialTextBox LabelText="Label" Text="User can clear input with one click" />
-                <customControls:MaterialTextBox LabelText="Label" Text="Additional can be defined below the line" HelperText="Helpertext" />
-                <customControls:MaterialTextBox x:Name="PriceBox" TextChanged="{x:Bind PriceBox_TextChanged}" LabelText="Label" PlaceholderText="Box can have an invalid state" ErrorText="Additional error information"/>
-                <customControls:MaterialTextBox LabelText="Label" MaxCharacter="30" Text="Maximum character count"/>
-                <customControls:MaterialTextBox LabelText="Autocomplete text can be supplied" AutocompleteText="Autocomplete"/>
-                <customControls:MaterialTextBox LabelText="Label" Text="Segoe MDL2 Assets" SegoeMDL2Icon="&#xED1E;"/>
+                <customControls:MaterialTextField LabelText="Line gives visual feedback when hovering" PlaceholderText="In focus the line and label are highlighted"/>
+                <customControls:MaterialTextField LabelText="Label" PlaceholderText="In focus label moves to the top to show placeholder"/>
+                <customControls:MaterialTextField LabelText="Label" Text="User can clear input with one click"/>
+                <customControls:MaterialTextField Background="LightGray" LabelText="Label" Text="Additional can be defined below the line" HelperText="Helpertext" />
+                <customControls:MaterialTextField x:Name="InvalidBox" TextChanged="{x:Bind InvalidBox_TextChanged}" LabelText="Label" PlaceholderText="Box can have an invalid state" ErrorText="Additional error information"/>
+                <customControls:MaterialTextField LabelText="Label" MaxCharacter="30" Text="Maximum character count"/>
+                <customControls:MaterialTextField LabelText="Autocomplete text can be supplied" AutocompleteText="Autocomplete"/>
+                <customControls:MaterialTextField LabelText="Label" Text="Boxed Text Field" Background="#FFE0E0E0" />
+                <customControls:MaterialTextField LabelText="Label" Text="Segoe MDL2 Assets" SegoeMDL2Icon="&#xED1E;"/>
             </StackPanel>
         </StackPanel>
 
