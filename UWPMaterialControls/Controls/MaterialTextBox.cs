@@ -44,9 +44,10 @@ namespace UWPMaterialControls.Controls
             this.PointerEntered += MaterialTextBox_PointerEntered;
             this.PointerExited += MaterialTextBox_PointerExited;
             
-            SetCommonVisualState(false);
-            SetOverlayTextVisualState(false);
+            SetCommonVisualStates(false);
+            SetOverlayTextVisualStates(false);
             //SetLabelVisualState called in labelPresenter.Loaded event because the height property of the label is needed before the VisualState is set
+            SetBoxedVisualStates(false);
             UpdateCharacterCountPresenter();
             TextChanged += MaterialTextBox_TextChanged;
 
@@ -64,7 +65,7 @@ namespace UWPMaterialControls.Controls
             {
                 SetValue(AutocompleteTextProperty, value);
                 if(isTemplatApplied)
-                    SetOverlayTextVisualState();
+                    SetOverlayTextVisualStates();
             }
         }
         // Using a DependencyProperty as the backing store for AutocompleteText.  This enables animation, styling, binding, etc...
@@ -131,7 +132,7 @@ namespace UWPMaterialControls.Controls
             set
             {
                 SetValue(ValidProperty, value);
-                SetCommonVisualState();
+                SetCommonVisualStates();
             }
         }
         // Using a DependencyProperty as the backing store for Valid.  This enables animation, styling, binding, etc...
@@ -164,7 +165,7 @@ namespace UWPMaterialControls.Controls
                 SetValue(PlaceholderTextProperty, value);
                 if (isTemplatApplied)
                 {
-                    SetOverlayTextVisualState();
+                    SetOverlayTextVisualStates();
                     SetLabelVisualStates(false);
                 }
             }
@@ -196,6 +197,21 @@ namespace UWPMaterialControls.Controls
         public static readonly DependencyProperty SegoeMDL2IconProperty =
             DependencyProperty.Register(nameof(SegoeMDL2Icon), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
 
+        public bool IsBoxed
+        {
+            get { return (bool)GetValue(IsBoxedProperty); }
+            set
+            {
+                SetValue(IsBoxedProperty, value);
+                SetBoxedVisualStates();
+            }
+        }
+        // Using a DependencyProperty as the backing store for Boxed.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsBoxedProperty =
+            DependencyProperty.Register(nameof(IsBoxed), typeof(bool), typeof(MaterialTextBox), new PropertyMetadata(false));
+
+
+
 
         private T GetTemplateChild<T>(string name) where T : DependencyObject
         {
@@ -208,28 +224,28 @@ namespace UWPMaterialControls.Controls
         private void MaterialTextBox_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             isPointerOver = false;
-            SetCommonVisualState();
+            SetCommonVisualStates();
         }
 
         private void MaterialTextBox_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             isPointerOver = true;
-            SetCommonVisualState();
+            SetCommonVisualStates();
         }
 
         private void MaterialTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             isInFoucs = false;
-            SetCommonVisualState();
-            SetOverlayTextVisualState();
+            SetCommonVisualStates();
+            SetOverlayTextVisualStates();
             SetLabelVisualStates();
         }
 
         private void MaterialTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             isInFoucs = true;
-            SetCommonVisualState();
-            SetOverlayTextVisualState();
+            SetCommonVisualStates();
+            SetOverlayTextVisualStates();
             SetLabelVisualStates();
         }
 
@@ -247,7 +263,7 @@ namespace UWPMaterialControls.Controls
 
         private void MaterialTextBox_TextChanged(object sender, RoutedEventArgs e)
         {
-            SetOverlayTextVisualState();
+            SetOverlayTextVisualStates();
             UpdateCharacterCountPresenter();
         }
 
@@ -258,7 +274,7 @@ namespace UWPMaterialControls.Controls
             SetLabelVisualStates(false);
         }
 
-        private void SetCommonVisualState(bool animations = true)
+        private void SetCommonVisualStates(bool animations = true)
         {
             if (isInFoucs)
             {
@@ -285,7 +301,7 @@ namespace UWPMaterialControls.Controls
             }
         }
 
-        private void SetOverlayTextVisualState(bool animations = true)
+        private void SetOverlayTextVisualStates(bool animations = true)
         {
             if (isInFoucs)
             {
@@ -313,6 +329,15 @@ namespace UWPMaterialControls.Controls
             }
             else
                 VisualStateManager.GoToState(this, "LabelOnTopOfTextBox", animations);
+        }
+
+        private void SetBoxedVisualStates(bool animations = true)
+        {
+            if(IsBoxed)
+                VisualStateManager.GoToState(this, "Boxed", animations);
+            else
+                VisualStateManager.GoToState(this, "UnBoxed", animations);
+
         }
 
         private void UpdateCharacterCountPresenter()
