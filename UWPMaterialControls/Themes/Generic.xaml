@@ -4,7 +4,7 @@
     xmlns:customControls="using:UWPMaterialControls.Controls"
     xmlns:converter="using:UWPMaterialControls.Converters">
 
-    <Style TargetType="customControls:MaterialTextBox">
+    <Style TargetType="customControls:MaterialTextField">
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="2,5,2,5"/>
@@ -16,7 +16,7 @@
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="customControls:MaterialTextBox">
+                <ControlTemplate TargetType="customControls:MaterialTextField">
                     <Grid Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" DataContext="{Binding ElementName=userControl}"
                           Background="{TemplateBinding Background}" Margin="{TemplateBinding Margin}">
                         <Grid.Resources>

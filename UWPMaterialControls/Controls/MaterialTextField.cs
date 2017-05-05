@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Media;
 
 namespace UWPMaterialControls.Controls
 {
-    public sealed class MaterialTextBox : Control
+    public sealed class MaterialTextField : Control
     {
         private TextBox textBoxControl;
         private ContentPresenter labelPresenter;
@@ -22,9 +22,9 @@ namespace UWPMaterialControls.Controls
         private bool isPointerOver;
         private bool isTemplatApplied;
 
-        public MaterialTextBox()
+        public MaterialTextField()
         {
-            this.DefaultStyleKey = typeof(MaterialTextBox);
+            this.DefaultStyleKey = typeof(MaterialTextField);
         }
 
         protected override void OnApplyTemplate()
@@ -70,7 +70,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for AutocompleteText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AutocompleteTextProperty =
-            DependencyProperty.Register(nameof(AutocompleteText), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(AutocompleteText), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
         public string Text
         {
@@ -82,7 +82,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register(nameof(Text), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(Text), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
         public string LabelText
         {
@@ -94,7 +94,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelTextProperty =
-            DependencyProperty.Register(nameof(LabelText), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(LabelText), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
         public double LabelFontSize
         {
@@ -103,7 +103,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for LabelFontSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelFontSizeProperty =
-            DependencyProperty.Register(nameof(LabelFontSize), typeof(double), typeof(MaterialTextBox), new PropertyMetadata(12));
+            DependencyProperty.Register(nameof(LabelFontSize), typeof(double), typeof(MaterialTextField), new PropertyMetadata(12));
 
         public string HelperText
         {
@@ -115,7 +115,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for HelperText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HelperTextProperty =
-            DependencyProperty.Register(nameof(HelperText), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(HelperText), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
         public string ErrorText
         {
@@ -124,7 +124,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for ErrorText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ErrorTextProperty =
-            DependencyProperty.Register(nameof(ErrorText), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(ErrorText), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
         public bool Valid
         {
@@ -137,7 +137,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for Valid.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValidProperty =
-            DependencyProperty.Register(nameof(Valid), typeof(bool), typeof(MaterialTextBox), new PropertyMetadata(true));
+            DependencyProperty.Register(nameof(Valid), typeof(bool), typeof(MaterialTextField), new PropertyMetadata(true));
 
         public Brush SecondaryTextForeground
         {
@@ -146,7 +146,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for PrimaryTextForeground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SecondaryTextForegroundProperty =
-            DependencyProperty.Register(nameof(SecondaryTextForeground), typeof(Brush), typeof(MaterialTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
+            DependencyProperty.Register(nameof(SecondaryTextForeground), typeof(Brush), typeof(MaterialTextField), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
 
         public Brush InputLineForeground
         {
@@ -155,7 +155,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for PrimaryTextForeground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InputLineForegroundProperty =
-            DependencyProperty.Register(nameof(InputLineForeground), typeof(Brush), typeof(MaterialTextBox), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
+            DependencyProperty.Register(nameof(InputLineForeground), typeof(Brush), typeof(MaterialTextField), new PropertyMetadata(new SolidColorBrush(Colors.Gray)));
 
         public string PlaceholderText
         {
@@ -172,7 +172,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for PlaceholderText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PlaceholderTextProperty =
-            DependencyProperty.Register(nameof(PlaceholderText), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(PlaceholderText), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
         public int MaxCharacter
         {
@@ -186,7 +186,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for MaxCharacter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxCharacterProperty =
-            DependencyProperty.Register(nameof(MaxCharacter), typeof(int), typeof(MaterialTextBox), new PropertyMetadata(-1));
+            DependencyProperty.Register(nameof(MaxCharacter), typeof(int), typeof(MaterialTextField), new PropertyMetadata(-1));
 
         public string SegoeMDL2Icon
         {
@@ -195,7 +195,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for SegoeMDL2Icon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SegoeMDL2IconProperty =
-            DependencyProperty.Register(nameof(SegoeMDL2Icon), typeof(string), typeof(MaterialTextBox), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(SegoeMDL2Icon), typeof(string), typeof(MaterialTextField), new PropertyMetadata(""));
 
         public bool IsBoxed
         {
@@ -208,7 +208,7 @@ namespace UWPMaterialControls.Controls
         }
         // Using a DependencyProperty as the backing store for Boxed.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsBoxedProperty =
-            DependencyProperty.Register(nameof(IsBoxed), typeof(bool), typeof(MaterialTextBox), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(IsBoxed), typeof(bool), typeof(MaterialTextField), new PropertyMetadata(false));
 
 
 

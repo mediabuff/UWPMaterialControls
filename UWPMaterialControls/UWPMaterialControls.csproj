@@ -107,7 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\MaterialTextBox.cs" />
+    <Compile Include="Controls\MaterialTextField.cs" />
     <Compile Include="Converters\OppositeVisibilityConverter.cs" />
     <Compile Include="Converters\StringToVisibilityConverter.cs" />
     <Compile Include="Converters\VerticalOffsetConverter.cs" />
