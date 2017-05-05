@@ -16,10 +16,11 @@ The control contains a normal TextBox with a custom template that almost removes
 - Segoe MDL2 Assets that are displayed next to the control
 - Helper text below the control
 - Button to clear text input
+- Text Field Box design
 
 Watch it in action - [imgur .gif](http://imgur.com/a/W20gm)
 
 
-[Documentation](https://github.com/SteffenViebrock/UWPMaterialControls/wiki/MaterialTextBox-Documentation)
+[Documentation](https://github.com/SteffenViebrock/UWPMaterialControls/wiki/MaterialTextField-Documentation)
 
 You are welcome to use this custom control but please use it with caution. I am relatively new to UWP controls. I would appreciate help and suggestions for improvements very much!
