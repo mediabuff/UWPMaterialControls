@@ -1,5 +1,5 @@
 # Material Design UWP Controls
-## MaterialTextBox
+## Material Text Field
 A custom UWP control that tries to implement the design and functionality for material text fields documented at [material.io](https://material.io)
 
 The control contains a normal TextBox with a custom template that almost removes all the traditional styling. Warpped arround that is are some other controls that are used to implement the desired material design and functionality.
